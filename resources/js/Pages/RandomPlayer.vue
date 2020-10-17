@@ -9,6 +9,7 @@
         <div>
             <div class="max-w-7xl mx-auto px-1 py-5 sm:px-6 lg:px-8">
                 <multiselect
+                        :searchable="false"
                         v-model="activePlayers"
                         :options="players"
                         :multiple="true"
@@ -64,8 +65,27 @@
         },
 
         methods: {
+            shuffle(array) {
+                let m = array.length, t, i;
+
+                // While there remain elements to shuffle…
+                while (m) {
+
+                    // Pick a remaining element…
+                    i = Math.floor(Math.random() * m--);
+
+                    // And swap it with the current element.
+                    t = array[m];
+                    array[m] = array[i];
+                    array[i] = t;
+                }
+
+                return array;
+            },
+
             getRandomPlayers() {
-                this.randomPlayers = this.activePlayers.sort(() => 0.5 - Math.random()).slice(0, 4);
+                let players = this.activePlayers;
+                this.randomPlayers = this.shuffle(players).slice(0, 4);
             },
         },
     }

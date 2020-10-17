@@ -4297,6 +4297,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4315,10 +4316,25 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    shuffle: function shuffle(array) {
+      var m = array.length,
+          t,
+          i; // While there remain elements to shuffle…
+
+      while (m) {
+        // Pick a remaining element…
+        i = Math.floor(Math.random() * m--); // And swap it with the current element.
+
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+      }
+
+      return array;
+    },
     getRandomPlayers: function getRandomPlayers() {
-      this.randomPlayers = this.activePlayers.sort(function () {
-        return 0.5 - Math.random();
-      }).slice(0, 4);
+      var players = this.activePlayers;
+      this.randomPlayers = this.shuffle(players).slice(0, 4);
     }
   }
 });
@@ -27944,6 +27960,7 @@ var render = function() {
           [
             _c("multiselect", {
               attrs: {
+                searchable: false,
                 options: _vm.players,
                 multiple: true,
                 "track-by": "id",
