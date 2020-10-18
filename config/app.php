@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'admin_password' => env('ADMIN_PASSWORD'),
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
@@ -173,6 +175,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
