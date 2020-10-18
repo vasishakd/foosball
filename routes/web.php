@@ -17,4 +17,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('/', [\App\Http\Controllers\RandomPlayerController::class, 'index'])->name('random_player.index');
+Route::get('/', [\App\Http\Controllers\MatchController::class, 'index'])->name('random_player.index');
+
+Route::post('/winners', [\App\Http\Controllers\WinnerController::class, 'store'])->name('winners.store');
