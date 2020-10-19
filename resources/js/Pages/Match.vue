@@ -20,21 +20,16 @@
                 >
                 </multiselect>
 
-                <div class="flex">
-                    <button
-                            @click="getRandomPlayers(2)"
-                            class="btn-color w-1/4 mx-auto text-white py-2 px-4 rounded my-4"
-                            :disabled="!activePlayers.length"
-                    >
-                        Single
-                    </button>
-                    <button
-                            @click="getRandomPlayers(4)"
-                            class="btn-color w-1/4 mx-auto text-white py-2 px-4 rounded my-4"
-                            :disabled="!activePlayers.length"
-                    >
-                        Double
-                    </button>
+                <div class="flex flex-wrap -mx-2">
+                    <div v-for="amount in 4" class="w-1/2 my-2 text-center">
+                        <button
+                                @click="getRandomPlayers(amount)"
+                                class="btn-color w-3/4 text-white py-2 px-4 rounded my-1"
+                                :disabled="!activePlayers.length"
+                        >
+                            {{ amount }}
+                        </button>
+                    </div>
                 </div>
 
                 <ul v-if="randomPlayers.length" class="flex flex-wrap -mx-2">
