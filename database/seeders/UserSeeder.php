@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'vasishak.d@gmail.com',
             'email_verified_at' => now(),
-            'password' => config('app.admin_password'),
+            'password' => bcrypt(config('app.admin_password')),
             'role' => User::ROLE_ADMIN,
         ]);
     }
