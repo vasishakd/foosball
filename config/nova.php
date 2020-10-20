@@ -1,13 +1,11 @@
 <?php
 
-use Laravel\Nova\Actions\ActionResource;
 use Laravel\Nova\Http\Middleware\Authenticate;
 use Laravel\Nova\Http\Middleware\Authorize;
 use Laravel\Nova\Http\Middleware\BootTools;
 use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Nova App Name
@@ -19,20 +17,7 @@ return [
     |
     */
 
-    'name' => env('NOVA_APP_NAME', env('APP_NAME')),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Nova Domain Name
-    |--------------------------------------------------------------------------
-    |
-    | This value is the "domain name" associated with your application. This
-    | can be used to prevent Nova's internal routes from being registered
-    | on subdomains which do not need access to your admin application.
-    |
-    */
-
-    'domain' => env('NOVA_DOMAIN_NAME', null),
+    'name' => env('APP_NAME', 'Nova Site'),
 
     /*
     |--------------------------------------------------------------------------
@@ -103,6 +88,8 @@ return [
         DispatchServingNovaEvent::class,
         BootTools::class,
         Authorize::class,
+        \App\Http\Middleware\RenameUploadedFiles::class,
+        'optimizeImages' => \Spatie\LaravelImageOptimizer\Middlewares\OptimizeImages::class,
     ],
 
     /*
@@ -110,40 +97,20 @@ return [
     | Nova Pagination Type
     |--------------------------------------------------------------------------
     |
-    | This option defines the visual style used in Nova's resource pagination
-    | views. You may select between "simple", "load-more", and "links" for
-    | your applications. Feel free to adjust this option to your choice.
+    | This option defines the visual style used in Nova's resource pagination.
+    | You may choose between 3 types: "simple", "load-more" and "links".
+    | Feel free to set this option to the visual style you like.
     |
     */
 
     'pagination' => 'simple',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Nova Action Resource Class
-    |--------------------------------------------------------------------------
-    |
-    | This configuration option allows you to specify a custom resource class
-    | to use instead of the type that ships with Nova. You may use this to
-    | define any extra form fields or other custom behavior as required.
-    |
-    */
+    'tinymce_api_key' => env('TINYMCE_API_KEY'),
 
-    'actions' => [
-        'resource' => ActionResource::class,
+    'tinymce_options' => [
+        'plugins' => [
+            'lists preview hr anchor pagebreak image wordcount fullscreen directionality paste textpattern'
+        ],
+        'toolbar' => 'undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | link',
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Nova Currency
-    |--------------------------------------------------------------------------
-    |
-    | This configuration option allows you to define the default currency
-    | used by the Currency field within Nova. You may change this to a
-    | valid ISO 4217 currency code to suit your application's needs.
-    |
-    */
-
-    'currency' => 'USD',
-
 ];

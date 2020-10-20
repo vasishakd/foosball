@@ -1,25 +1,28 @@
-require('./bootstrap');
-
 import Vue from 'vue';
+import axios from 'axios';
+import PersonalWarning from './components/personal-warning.vue';
 
-import { InertiaApp } from '@inertiajs/inertia-vue';
-import { InertiaForm } from 'laravel-jetstream';
-import PortalVue from 'portal-vue';
-import './plugins/axios';
-
-Vue.mixin({ methods: { route } });
-Vue.use(InertiaApp);
-Vue.use(InertiaForm);
-Vue.use(PortalVue);
-
-const app = document.getElementById('app');
+window.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+axios.defaults.headers.post['X-CSRF-Token'] = window.csrf;
 
 new Vue({
-    render: (h) =>
-        h(InertiaApp, {
-            props: {
-                initialPage: JSON.parse(app.dataset.page),
-                resolveComponent: (name) => require(`./Pages/${name}`).default,
-            },
-        }),
-}).$mount(app);
+    el: '#header',
+    components: {
+
+    },
+});
+
+new Vue({
+    el: '#main',
+    components: {
+        'personal-warning': require('./components/personal-warning').default,
+        'match': require('./components/match').default,
+    },
+});
+
+new Vue({
+    el: '#footer',
+    components: {
+        PersonalWarning,
+    },
+});

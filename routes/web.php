@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +11,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
-
-Route::get('/', [\App\Http\Controllers\MatchController::class, 'index'])->name('random_player.index');
-
+Route::get('/', [\App\Http\Controllers\MatchController::class, 'show'])->name('main');
 Route::post('/winners', [\App\Http\Controllers\WinnerController::class, 'store'])->name('winners.store');
+
+Route::get('robots.txt', 'RobotsController')->name('robots');
+Route::get('sitemap.xml', 'SitemapController')->name('sitemap');

@@ -1,18 +1,42 @@
 const mix = require('laravel-mix');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const devMode = !mix.inProduction();
+require('laravel-mix-bundle-analyzer');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
+mix
+    .js('resources/js/app.js', 'public/js').extract()
+    .js('resources/js/check-support.js', 'public/js')
+    .sass('resources/sass/nova.scss', 'public/css/nova.css')
+    .sass('resources/sass/app.scss', 'public/css', {
+        implementation: require('node-sass')
+    })
+    .sass('resources/sass/components.scss', 'public/css')
+    .options({extractVueStyles: true})
+    .webpackConfig({
+        devtool: devMode ? 'source-map' : '',
+        plugins: [
+            new BrowserSyncPlugin(
+                {
+                    host: 'localhost',
+                    port: 3000,
+                    proxy: 'http://project.flagstudio.loc',
+                    files: [
+                        './resources/views/**/*.php'
+                    ]
+                },
+                {
+                    reload: true
+                }
+            )
+        ]
+    })
+    .version()
+    .copyDirectory('resources/img', 'public/images');
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ]);
+if (devMode) {
+    mix.sourceMaps();
+}
+
+// if (mix.inProduction()) {
+//     mix.bundleAnalyzer();
+// }

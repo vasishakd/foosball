@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
-use Inertia\Inertia;
 
 class MatchController extends Controller
 {
-    public function index()
+    public function show()
     {
         $players = Player::all(['id', 'name']);
 
-        return Inertia::render('Match', [
-            'defaultPlayers' => $players,
-        ]);
+        return view('match.show', compact('players'));
     }
 }

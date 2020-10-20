@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Cards\Help;
+use Flagstudio\NovaContacts\NovaContacts;
+use Flagstudio\NovaInstructions\NovaInstructions;
 use Laravel\Nova\Nova;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -17,6 +18,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::style('admin', public_path('css/nova.css'));
     }
 
     /**
@@ -47,25 +50,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     }
 
     /**
-     * Get the cards that should be displayed on the default Nova dashboard.
+     * Get the cards that should be displayed on the Nova dashboard.
      *
      * @return array
      */
     protected function cards()
     {
         return [
-            new Help,
+            new NovaContacts,
+            new NovaInstructions,
         ];
-    }
-
-    /**
-     * Get the extra dashboards that should be displayed on the Nova dashboard.
-     *
-     * @return array
-     */
-    protected function dashboards()
-    {
-        return [];
     }
 
     /**
@@ -85,6 +79,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('Laravel\Nova\Http\Controllers\ResourceUpdateController', 'App\Http\Controllers\Nova\ResourceUpdateController');
     }
 }
