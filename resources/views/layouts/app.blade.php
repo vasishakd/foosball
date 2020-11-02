@@ -29,25 +29,16 @@
     {!! AdminBar::generate() !!}
 @endif
 
-<div class="main-wrapper">
-    <div class="layout">
-        <header id="header" class="header">
+@yield('content')
 
-        </header>
-
-        @yield('content')
-
-    </div>
-
-    <footer id="footer" class="footer">
-        <personal-warning>
-            <template v-slot:default>
-                Мы используем данные файлы cookie, данные об IP-адресе и местоположении, разработанные третьими лицами для анализа событий на нашем сайте. Продолжая просмотр страниц сайта, вы принимаете условия его использования. Более подробные сведения можно посмотреть в
-                <a class="personal-warning__link" href="#!" target="_blank" title="Политика конфиденциальности">Политике конфиденциальности</a>.
-            </template>
-        </personal-warning>
-    </footer>
-</div>
+<footer id="footer" class="footer">
+    <personal-warning>
+        <template v-slot:default>
+            Мы используем данные файлы cookie, данные об IP-адресе и местоположении, разработанные третьими лицами для анализа событий на нашем сайте. Продолжая просмотр страниц сайта, вы принимаете условия его использования. Более подробные сведения можно посмотреть в
+            <a class="personal-warning__link" href="#!" target="_blank" title="Политика конфиденциальности">Политике конфиденциальности</a>.
+        </template>
+    </personal-warning>
+</footer>
 
 <div id="update-warning" class="update-warning" style="display: none">
     <p>Вы пользуетесь устаревшей версией браузера. Данная версия браузера не поддерживает многие современные технологии, из-за чего страницы отображаются некорректно, а главное — на сайте могут работать не все функции.<br> Рекомендуем установить <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a> — современный, быстрый и безопасный браузер.</p>

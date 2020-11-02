@@ -13,7 +13,7 @@ $path-fonts: "../../fonts/";
 //== Fonts
 
 // Family
-$font-family-base: "Roboto", Arial, sans-serif;
+$font-family-base: "Montserrat", Arial, sans-serif;
 
 // Size
 $font-size-base: 16px;
@@ -34,10 +34,16 @@ $black-weight: 900;
 
 
 //== Site sizes
-$site-width: 1200px;
-$site-gutter: 15px;
+$site-width: 400px;
+$site-gutter: 24px;
 
 //== Colors
 
 $white: #fff;
 $black: #000;
+$dark: #18191F;
+$yellow: #FFBD12;
+$orange: #F95A2C;
+$pink: #FF9692;
+$blue: #1947E5;
+$green: #00C6AE;

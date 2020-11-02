@@ -6,17 +6,9 @@ window.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('co
 axios.defaults.headers.post['X-CSRF-Token'] = window.csrf;
 
 new Vue({
-    el: '#header',
-    components: {
-
-    },
-});
-
-new Vue({
     el: '#main',
     components: {
-        'personal-warning': require('./components/personal-warning').default,
-        'match': require('./components/match').default,
+
     },
 });
 
