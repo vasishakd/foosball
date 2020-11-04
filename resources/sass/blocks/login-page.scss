@@ -1,0 +1,68 @@
+.login-page {
+  height: 100vh;
+}
+
+.login-page__inner {
+  @include inner;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-page__logo {
+  width: 210px;
+  margin: 0 auto 44px;
+}
+
+.login-page__title {
+  font-family: $font-family-base;
+  font-size: 36px;
+  line-height: 1.11;
+  font-weight: $black-weight;
+  color: $black;
+  margin: 0 0 24px;
+}
+
+.login-page__input {
+  &:first-child {
+    margin-bottom: 24px;
+  }
+
+  &:nth-child(2) {
+    margin-bottom: 48px;
+  }
+}
+
+.login-page__login-btn {
+  margin-bottom: 40px;
+}
+
+.login-page__sign-up-box {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page__sign-up-text {
+  font-family: $font-family-base;
+  font-weight: $medium;
+  margin: 0 5px 0 0;
+  font-size: 13px;
+  color: $black;
+  line-height: 1.38;
+}
+
+.login-page__sign-up-link {
+  font-family: $font-family-base;
+  font-weight: $medium;
+  margin: 0;
+  font-size: 13px;
+  color: $orange;
+  line-height: 1.38;
+  transition: .25s color ease;
+
+  &:hover {
+    color: $orange-800;
+  }
+}

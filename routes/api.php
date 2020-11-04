@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
+Route::post('/login', function (Request $request) {
+    $response = [];
+    $response['status'] = 'success'; //success or error
+    $response['message'] = ''; //error text;
+
+    return response()->json($response);
+});

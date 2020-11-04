@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', [\App\Http\Controllers\MatchController::class, 'show'])->name('main');
 Route::post('/winners', [\App\Http\Controllers\WinnerController::class, 'store'])->name('winners.store');
+
+Route::view('/', 'layouts.app')->name('main');
+Route::view('/login', 'login.show')->name('login.show');
 
 Route::get('robots.txt', 'RobotsController')->name('robots');
 Route::get('sitemap.xml', 'SitemapController')->name('sitemap');
