@@ -14,7 +14,6 @@
             </h1>
             <form
                 method="post"
-                action="/"
                 class="login-page__form"
                 novalidate
                 @submit.prevent="submitLoginForm"
@@ -75,7 +74,7 @@
                     You are new?
                 </p>
                 <a
-                    :href="urls.signUpPage"
+                    :href="urls.sign_up"
                     class="login-page__sign-up-link"
                 >Sign up</a>
             </div>
@@ -119,7 +118,7 @@ export default {
                 email: this.fields.email,
                 password: this.fields.password,
             }, () => {
-                window.location.href = this.urls.homePage;
+                window.location.href = this.urls.home;
             });
         },
         validateField(fieldValue, fieldName) {

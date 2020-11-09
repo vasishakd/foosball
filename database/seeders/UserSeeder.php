@@ -21,10 +21,11 @@ class UserSeeder extends Seeder
         }
 
         User::factory()->create([
-            'name' => 'Flagstudio',
-            'email' => 'forspam@flagstudio.ru',
+            'name' => 'admin',
+            'email' => 'vasishak.d@gmail.com',
             'password' => bcrypt(config('app.admin_password')), // secret
             'email_verified_at' => now(),
+            'role' => User::ROLE_ADMIN,
         ]);
     }
 }
