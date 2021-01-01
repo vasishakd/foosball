@@ -9,25 +9,22 @@
   left: 16px;
   fill: $black;
   transition: .25s fill ease;
-
-  &--error {
-
-  }
 }
 
 .main-input__input {
+  display: block;
+  width: 100%;
   height: 52px;
+  padding-left: 50px;
   border: 2px solid $black;
   border-radius: 16px;
-  display: block;
+  color: $black;
+  outline: none;
+  font-weight: $medium;
   font-size: 21px;
   font-family: $font-family-base;
-  font-weight: $medium;
   line-height: 1.33;
-  color: $black;
-  padding-left: 50px;
   transition: .25s border-color ease;
-  outline: none;
 
   &::placeholder {
     color: $black;
@@ -36,7 +33,7 @@
   &:focus {
     border-color: $black-800;
 
-    & + .main-input__icon {
+    + .main-input__icon {
       fill: $black-800;
     }
   }
@@ -44,14 +41,14 @@
   &--error {
     border-color: $orange;
 
-    & + .main-input__icon {
+    + .main-input__icon {
       fill: $orange;
     }
 
     &:focus {
       border-color: $orange-800;
 
-      & + .main-input__icon {
+      + .main-input__icon {
         fill: $orange-800;
       }
     }

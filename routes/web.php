@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::post('/winners', [\App\Http\Controllers\WinnerController::class, 'store'])->name('winners.store');
+Route::view('/registration', 'auth.registration')->name('auth.registration');
 
 Route::get('robots.txt', 'RobotsController')->name('robots');
 Route::get('sitemap.xml', 'SitemapController')->name('sitemap');

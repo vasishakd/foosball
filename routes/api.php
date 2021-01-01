@@ -24,3 +24,11 @@ Route::post('/login', function (Request $request) {
 
     return response()->json($response);
 });
+
+Route::post('/registration', function (Request $request) {
+    $response = [];
+    $response['status'] = 'success'; //success or error
+    $response['message'] = ''; //error text;
+
+    return response()->json($response);
+});
